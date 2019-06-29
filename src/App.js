@@ -28,8 +28,10 @@ class App extends Component {
     return (
       <div className="App">
         <header>Dad Jokes</header>
-        <p className="jokebox">{this.state.joke}</p>
-       <div className='buttonbox'>
+        <div className='jokeholder'>
+          <p className="jokebox">{this.state.joke}</p>
+        </div>
+        <div className='buttonbox'>
          <button className="jokebutton" onClick={this.handleClick}>Randomize</button>
         </div>
       </div>
