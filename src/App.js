@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      joke: ""
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    event.preventDefault()
+    this.componentDidMount();
+  }
+
+  componentDidMount() {
+    fetch("https://icanhazdadjoke.com/", { headers: { Accept: "application/json" } }) //API lesson, attach header
+      .then(res => res.json()) //Receive a joke
+      .then(joke => this.setState({ joke: joke.joke })) //Input JSON onto this.state.joke object
+      .then(joke => console.log(this.state.joke))
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header>Random Dad Jokes</header>
+        <p className="jokebox">{this.state.joke}</p>
+        <button className="jokebutton" onClick={this.handleClick} >Dad Joke</button>
+      </div>
+    );
+  }
 }
 
 export default App;
