@@ -1,2 +1,4 @@
-Simple practice in React making API requests.
-Button to reset/randomize
+- React practice utilizing 3rd-party API making AJAX requests.
+- Button to reset/randomize
+
+![](public/dadjokes.png)
