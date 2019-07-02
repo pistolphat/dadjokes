@@ -1,23 +1,25 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component } from 'react';
+import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      joke: ""
+      joke: ''
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
-    event.preventDefault()
+    event.preventDefault();
     this.componentDidMount();
   }
 
   componentDidMount() {
-    fetch("https://icanhazdadjoke.com/", { headers: { Accept: "application/json" } }) //API lesson, attach header
+    fetch('https://icanhazdadjoke.com/', {
+      headers: { Accept: 'application/json' }
+    }) //API lesson, attach header
       .then(res => res.json()) //Receive a joke
       .then(joke => this.setState({ joke: joke.joke })) //Input JSON onto this.state.joke object
       .then(joke => console.log(this.state.joke))
@@ -26,13 +28,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header>Dad Jokes</header>
-        <div className='jokeholder'>
-          <p className="jokebox">{this.state.joke}</p>
+      <div className='App container img-fluid'>
+        <header className='container'>Dad Jokes</header>
+        <div className='jokeholder container'>
+          <p className='jokebox'>{this.state.joke}</p>
         </div>
-        <div className='buttonbox'>
-         <button className="jokebutton" onClick={this.handleClick}>Randomize</button>
+        <div className='buttonbox container'>
+          <button className='jokebutton' onClick={this.handleClick}>
+            Randomize
+          </button>
         </div>
       </div>
     );
