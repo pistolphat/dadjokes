@@ -22,21 +22,25 @@ class App extends Component {
     }) //API lesson, attach header
       .then(res => res.json()) //Receive a joke
       .then(joke => this.setState({ joke: joke.joke })) //Input JSON onto this.state.joke object
-      .then(joke => console.log(this.state.joke))
+      // .then(joke => console.log(this.state.joke))
       .catch(err => console.log(err));
   }
 
   render() {
     return (
-      <div className='App container img-fluid'>
-        <header className='container'>Dad Jokes</header>
-        <div className='jokeholder container'>
-          <p className='jokebox'>{this.state.joke}</p>
-        </div>
-        <div className='buttonbox container'>
-          <button className='jokebutton' onClick={this.handleClick}>
-            Randomize
-          </button>
+      <div>
+        <div className='main-content container-fluid'>
+          <div className='header-container'>
+            <header>Dad Jokes</header>
+          </div>
+          <div className='joke-container'>
+            <p className='jokebox'>{this.state.joke}</p>
+          </div>
+          <div className='button-container'>
+            <button className='jokebutton' onClick={this.handleClick}>
+              Randomize
+            </button>
+          </div>
         </div>
       </div>
     );
